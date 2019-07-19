@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.activity_splash.*
 
 /*
@@ -18,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
     private val SPLASH_TIME: Long = 4000
     // 다음 화면으로 넘어가기 위한 Runnable 변수.
     val mRunnable: Runnable = Runnable {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 
@@ -29,6 +30,7 @@ class SplashActivity : AppCompatActivity() {
         // Glide에 스플래쉬 넣기
         Glide.with(this)
             .load(R.drawable.splash)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(splashView)
 
         // Handler 초기화

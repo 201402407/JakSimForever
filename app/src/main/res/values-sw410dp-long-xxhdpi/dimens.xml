@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Galaxy Note 9 Size // 1580 x 2960 -->
+
+    <!-- LoginActivity -->
+    <dimen name="LoginLogoHeight">160dp</dimen>
+    <dimen name="LoginEditTextHeight">33dp</dimen>
+    <dimen name="LoginBtnWidth">270dp</dimen>
+    <dimen name="JoinBtnHeight">50dp</dimen>
+    <dimen name="LoginBackgroundMarginTop">70dp</dimen>
+    <dimen name="LoginLayoutMargin">25dp</dimen>
+
+    <dimen name="LoginBackgroundHeight">450dp</dimen>
+    <dimen name="LoginLogoMarginTop">180dp</dimen>
+    <dimen name="LoginTextSize">14dp</dimen>
+    <dimen name="LoginBtnMarginTop">35dp</dimen>
+    <!-- JoinActivity -->
+    <dimen name="joinLayoutMargin">20dp</dimen>
+    <dimen name="checkBtnHeight">30dp</dimen>
+    <dimen name="cardLayoutMargin">10dp</dimen>
+    <dimen name="cardLayoutWidth">330dp</dimen>
+    <dimen name="cardEditTextHeight">35dp</dimen>
+    <dimen name="JoinUserLayoutMarginTop">40dp</dimen>
+    <dimen name="JoinEditTextWidth">190dp</dimen>
+    <dimen name="JoinPwdEditTextWidth">268dp</dimen>
+    <dimen name="JoinUserTextviewHeight">30dp</dimen>
+    <dimen name="JoinUserTextviewWidth">40dp</dimen>
+    <dimen name="JoinMargin">5dp</dimen>
+
+    <!-- AddRoomActivity -->
+    <dimen name="addRoomLayoutMargin">17dp</dimen>
+
+    <!-- MainActivity -->
+    <dimen name="MainLayoutMargin">10dp</dimen>
+</resources>
