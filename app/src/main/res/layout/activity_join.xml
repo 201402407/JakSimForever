@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".JoinActivity">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:layout_marginLeft="@dimen/joinLayoutMargin"
+                  android:layout_marginRight="@dimen/joinLayoutMargin">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/JoinUserLayoutMarginTop"
+        >
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            >
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/join_userinfobackground"
+                        android:adjustViewBounds="true"
+                />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/joinLayoutMargin"
+                        android:layout_marginRight="@dimen/joinLayoutMargin"
+                        android:layout_marginTop="50dp">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:weightSum="1"
+                    >
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="0.2"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:text="아이디"
+                                android:textSize="13dp"
+                                android:gravity="left|center"
+                        />
+
+                        <EditText
+                                android:id="@+id/editTextID"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.6"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:imeOptions="actionNext"
+                                android:inputType="textNoSuggestions"
+                                android:paddingLeft="10dp"
+                                android:background="@drawable/join_idedittext"
+                        />
+
+                        <ImageView
+                                android:id="@+id/idCheckBtn"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.2"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                app:srcCompat="@drawable/join_checkbtn"
+                                android:layout_marginLeft="10dp"
+                                android:adjustViewBounds="true"
+                        />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/JoinMarginTop"
+                            android:layout_gravity="center"
+                    >
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="0.2"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:text="비밀번호"
+                                android:textSize="13dp"
+                                android:gravity="left|center"
+                                android:layout_gravity="left"
+                        />
+
+                        <EditText
+                                android:id="@+id/editTextPwd"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.8"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:imeOptions="actionNext"
+                                android:background="@drawable/join_cardedittext"
+                                android:inputType="textPassword"
+                                android:paddingLeft="10dp"
+                        />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/JoinMarginTop"
+                    >
+                        <View
+                                android:layout_width="0dp"
+                                android:layout_weight="0.2"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:gravity="left|center"
+                                android:layout_gravity="left"
+                        />
+                        <EditText
+                                android:id="@+id/editTextPwdReCheck"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.8"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:imeOptions="actionNext"
+                                android:background="@drawable/join_cardedittext"
+                                android:inputType="textPassword"
+                                android:layout_gravity="center"
+                                android:paddingLeft="10dp"
+                        />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/JoinMarginTop"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                    >
+
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="0.2"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:text="닉네임"
+                                android:textSize="13dp"
+                                android:gravity="left|center"
+                        />
+
+                        <EditText
+                                android:id="@+id/editTextNickname"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.6"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:imeOptions="actionNext"
+                                android:inputType="textNoSuggestions"
+                                android:background="@drawable/join_idedittext"
+                                android:paddingLeft="10dp"
+                        />
+                        <ImageView
+                                android:id="@+id/nicknameCheckBtn"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.2"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:layout_marginLeft="10dp"
+                                android:adjustViewBounds="true"
+                                android:layout_gravity="right|center"
+                                app:srcCompat="@drawable/join_checkbtn"
+                        />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+        >
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/join_cardinfobackground"
+                        android:adjustViewBounds="true">
+
+                </ImageView>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/joinLayoutMargin"
+                        android:layout_marginRight="@dimen/joinLayoutMargin"
+                        android:layout_marginTop="30dp">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_gravity="center"
+                            android:textSize="12dp"
+                            android:text="은행"/>
+
+                    <Spinner
+                            android:id="@+id/bankSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/cardEditTextHeight"
+                            android:background="@drawable/join_cardbankspinner"
+                            android:paddingLeft="10dp"
+                            android:layout_gravity="center"></Spinner>
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="12dp"
+                            android:layout_marginTop="@dimen/JoinCardMarginTop"
+                            android:text="카드번호"/>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/cardEditTextHeight"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:weightSum="1.05">
+
+                        <EditText
+                                android:id="@+id/editTextCardName1"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/cardEditTextHeight"
+                                android:layout_weight="0.225"
+                                android:imeOptions="actionNext"
+                                android:inputType="textNoSuggestions"
+                                android:paddingLeft="15dp"
+                                android:background="@drawable/join_cardnumedittext"
+                        />
+
+                        <View
+                                android:layout_width="0dp"
+                                android:layout_weight="0.05"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:gravity="left|center"
+                                android:layout_gravity="left"
+                        />
+
+                        <EditText
+                                android:id="@+id/editTextCardName2"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/cardEditTextHeight"
+                                android:layout_weight="0.225"
+                                android:imeOptions="actionNext"
+                                android:inputType="textNoSuggestions"
+                                android:paddingLeft="10dp"
+                                android:background="@drawable/join_cardnumedittext"
+                        />
+
+                        <View
+                                android:layout_width="0dp"
+                                android:layout_weight="0.05"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:gravity="left|center"
+                                android:layout_gravity="left"
+                        />
+
+                        <EditText
+                                android:id="@+id/editTextCardName3"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/cardEditTextHeight"
+                                android:layout_weight="0.225"
+                                android:imeOptions="actionNext"
+                                android:inputType="textNoSuggestions"
+                                android:paddingLeft="10dp"
+                                android:background="@drawable/join_cardnumedittext"
+                        />
+
+                        <View
+                                android:layout_width="0dp"
+                                android:layout_weight="0.05"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:gravity="left|center"
+                                android:layout_gravity="left"
+                        />
+
+                        <EditText
+                                android:id="@+id/editTextCardName4"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/cardEditTextHeight"
+                                android:layout_weight="0.225"
+                                android:imeOptions="actionNext"
+                                android:inputType="textNoSuggestions"
+                                android:paddingLeft="10dp"
+                                android:background="@drawable/join_cardnumedittext"
+                        />
+                    </LinearLayout>
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/JoinCardMarginTop"
+                            android:textSize="12dp"
+                            android:text="CVC 번호"/>
+
+                    <EditText
+                            android:id="@+id/editTextCardCVC"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/cardEditTextHeight"
+                            android:imeOptions="actionNext"
+                            android:inputType="textNoSuggestions"
+                            android:paddingLeft="10dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/join_cardedittext"
+                    />
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="12dp"
+                            android:layout_marginTop="@dimen/JoinCardMarginTop"
+                            android:text="카드만기일"/>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/cardEditTextHeight"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="1"
+                    >
+
+                        <Spinner
+                                android:id="@+id/yearSpinner"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/cardEditTextHeight"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.45"
+                                android:background="@drawable/join_cardyearspinner"
+                                android:paddingLeft="10dp"></Spinner>
+                        <View
+                                android:layout_width="0dp"
+                                android:layout_weight="0.05"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:gravity="left|center"
+                                android:layout_gravity="left"
+                        />
+
+                        <Spinner
+                                android:id="@+id/monthSpinner"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/cardEditTextHeight"
+                                android:layout_weight="0.225"
+                                android:background="@drawable/join_cardmonthspinner"
+                                android:paddingLeft="5dp"
+                                android:layout_gravity="center"
+                        ></Spinner>
+
+                        <View
+                                android:layout_width="0dp"
+                                android:layout_weight="0.05"
+                                android:layout_height="@dimen/JoinUserTextviewHeight"
+                                android:gravity="left|center"
+                                android:layout_gravity="left"
+                        />
+
+                        <Spinner
+                                android:id="@+id/daySpinner"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/cardEditTextHeight"
+                                android:layout_weight="0.225"
+                                android:background="@drawable/join_carddayspinner"
+                                android:paddingLeft="5dp"
+                                android:layout_gravity="center"
+                        ></Spinner>
+                    </LinearLayout>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="12dp"
+                            android:layout_marginTop="@dimen/JoinCardMarginTop"
+                            android:text="카드비밀번호"/>
+
+                    <EditText
+                            android:id="@+id/editTextCardPwd"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/cardEditTextHeight"
+                            android:imeOptions="actionNext"
+                            android:inputType="textNoSuggestions"
+                            android:paddingLeft="10dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/join_cardedittext"
+                    />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <ImageView
+                android:id="@+id/joinSuccessBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/JoinBtnHeight"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/join_joinbtn"
+        />
+
+    </LinearLayout>
+</ScrollView>
