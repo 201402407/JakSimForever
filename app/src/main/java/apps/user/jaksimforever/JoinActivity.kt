@@ -21,7 +21,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class JoinActivity : AppCompatActivity() {
+class JoinActivity : FontActivity() {
     var context: Context? = null
     var joinData: JoinData? = null
     var isCheckID: Boolean = false
@@ -127,6 +127,9 @@ class JoinActivity : AppCompatActivity() {
                     memberID?.let { memberNickname?.let { editTextPwd.text?.let { editTextPwdReCheck.text?.let {    // 아이디, 비밀번호, 닉네임 null 체크
                         if (editTextPwd.text.toString() == editTextPwdReCheck.text.toString()) {    // 비밀번호와 비밀번호 확인이 같은지 체크
                             if (isJoinCard) {
+                                // TODO - 카드 정보를 담아 서버에 전송하는 코드 작성
+                                // TODO - 카드 EditText 가져오기 + 예외 처리.
+                                // TODO - 서버로 보낼 때 Date 타입은 어떻게 처리하는지 구현 및 테스트
                                 // joinData = JoinData(memberID!!, editTextPwd.text.toString(), memberNickname!!, null)
                             }
                             else {

@@ -20,7 +20,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : FontActivity() {
     var context: Context? = null
     var logindata: LoginData? = null
 
@@ -57,6 +57,11 @@ class LoginActivity : AppCompatActivity() {
                             if (it.result == 1) {   // 로그인 성공
                                 Log.d(TAG, "nickname : ${it.nickname}")
                                 Toast.makeText(context, "Success! your nickname : ${it.nickname}", Toast.LENGTH_LONG).show()
+
+                                intent = Intent(context, RoomListActivity::class.java)
+                                intent.putExtra("nickname", it.nickname)
+                                startActivity(intent)
+                                finish()
                             }
                             else {
                                 Log.d(TAG, "Failed! failed reason : ${it.reason}")

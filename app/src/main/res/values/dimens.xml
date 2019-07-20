@@ -35,4 +35,17 @@
 
     <!-- MainActivity -->
     <dimen name="MainLayoutMargin">10dp</dimen>
+    <dimen name="MainUserInfoMarginTop">10dp</dimen>
+    <dimen name="MainUserInfoLayoutHeight">100dp</dimen>
+    <dimen name="MainMyMoneyTextSize">20dp</dimen>
+    <dimen name="MainImageHeight">200dp</dimen>
+    <dimen name="MainMyStatusMarginTop">200dp</dimen>
+
+    <!-- RoomListActivity -->
+    <dimen name="RoomListLayoutMargin">10dp</dimen>
+    <dimen name="searchBarHeight">30dp</dimen>
+    <dimen name="searchBtnWidth">20dp</dimen>
+    <dimen name="searchBtnMarginLeft">10dp</dimen>
+    <dimen name="searchBtnMarginRight">15dp</dimen>
+    <dimen name="searchRecycleViewHeight">350dp</dimen>
 </resources>

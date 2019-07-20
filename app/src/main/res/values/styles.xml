@@ -14,4 +14,19 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <!-- 탭 테마 -->
+    <style name="TabTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:textColorPrimary">@android:color/black</item>       <!-- 탭바 선택된 텍스트 -->
+        <item name="android:textColorSecondary">@android:color/black</item>     <!-- 탭바 텍스트 -->
+
+        <item name="colorAccent">@android:color/white</item>                    <!-- 하단 움직이는 바 색-->
+    </style>
+
+    <!-- tab text -->
+    <style name="tabText" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">17dp</item>
+        <item name="android:textColor">#A3A3A3</item>
+    </style>
 </resources>
