@@ -14,6 +14,11 @@ import apps.user.jaksimforever.data.RoomListData
 import apps.user.jaksimforever.databinding.RoomListItemBinding
 import kotlinx.android.synthetic.main.main_list_item.view.*
 
+/*
+    RoomList의 ViewModel
+    Data binding 사용
+    adapter code 이렇게 사용하면 됨
+ */
 class RoomListAdapter(val context: Context, private val roomItemList: ArrayList<RoomListData>) : RecyclerView.Adapter<RoomListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {

@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+>
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:background="@color/white"
                   android:orientation="vertical"
                   tools:context=".RoomListActivity">
+
+        <android.support.design.widget.CoordinatorLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.AppBarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TabTheme">
+
+                <android.support.design.widget.TabLayout
+                        android:id="@+id/durationTabLayout"
+                        android:layout_width="match_parent"
+                        app:tabIndicatorAnimationDuration="300"
+                        android:layout_height="wrap_content" />
+
+            </android.support.design.widget.AppBarLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
 
         <RelativeLayout
                 android:layout_width="wrap_content"
@@ -43,19 +64,14 @@
                     android:adjustViewBounds="true"
                     app:srcCompat="@drawable/list_searchbtn" />
         </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/roomListRecyclerView"
+        <android.support.v4.view.ViewPager
+                android:id="@+id/roomListViewPager"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/searchRecycleViewHeight"
                 android:layout_marginLeft="@dimen/RoomListLayoutMargin"
-                android:layout_marginRight="@dimen/RoomListLayoutMargin"
-                android:visibility="visible"
-                tools:listItem="@layout/room_list_item"
-        >
+                android:layout_marginRight="@dimen/RoomListLayoutMargin">
 
-        </android.support.v7.widget.RecyclerView>
-
+        </android.support.v4.view.ViewPager>
 
         <android.support.design.widget.TabLayout
                 android:id="@+id/listTablayout"
