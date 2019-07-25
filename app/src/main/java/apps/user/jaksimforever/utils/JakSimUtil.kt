@@ -7,7 +7,7 @@ class JakSimUtil {
 
     // 전역변수로 변경. 다른 클래스에서 직접 참조 가능
     companion object {
-        val SERVER_URL: String = "http://192.168.1.4:8080"
+        val SERVER_URL: String = "http://192.168.1.6:8080"
         val TAG: String = "LogGoGo"
     }
 }

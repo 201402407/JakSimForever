@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <integer name="searchResultCount">6</integer>
     <!-- LoginActivity -->
     <dimen name="LoginLogoHeight">160dp</dimen>
     <dimen name="LoginEditTextHeight">33dp</dimen>

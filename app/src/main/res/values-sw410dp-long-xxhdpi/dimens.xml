@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Galaxy Note 9 Size // 1580 x 2960 -->
-
+    <integer name="searchResultCount">8</integer>
     <!-- LoginActivity -->
     <dimen name="LoginLogoHeight">160dp</dimen>
     <dimen name="LoginEditTextHeight">33dp</dimen>
