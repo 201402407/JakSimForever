@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JakSimForever</string>
+    <string name="addRoomContextHint">목표 내용을 입력해주세요. \n (목표에 대한 내용 설명, 인증 방법 등)</string>
 </resources>

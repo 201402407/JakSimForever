@@ -15,6 +15,7 @@ import android.widget.Toast
 import apps.user.jaksimforever.JakSimUtil
 import apps.user.jaksimforever.JakSimUtil.Companion.TAG
 import apps.user.jaksimforever.R
+import apps.user.jaksimforever.R.id.listTabLayout
 import apps.user.jaksimforever.RoomListActivity
 import apps.user.jaksimforever.adapter.RoomListAdapter
 import apps.user.jaksimforever.data.RoomListData
@@ -30,11 +31,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.ArrayList
 
 @SuppressLint("ValidFragment")
-class RoomListFragment() : Fragment() {
+class RoomListFragment(var durationIndex: Int) : Fragment() {
     var roomListAdapter: RoomListAdapter? = null
     var roomDataList = arrayListOf<RoomListData>()
     var indexStartNum: Int = 1
-    var durationIndex: Int = 0
     private var isPageRefresh: Boolean = false
     private var searchResultCount: Int = 0
     lateinit var binding: FragmentRoomListBinding
@@ -60,7 +60,7 @@ class RoomListFragment() : Fragment() {
             .build()
             .create(RoomListService::class.java)
 
-        val map = hashMapOf("room_type" to durationIndex)   // 전송 타입에 맞게 변환
+        val map = hashMapOf("room_duration" to durationIndex)   // 전송 타입에 맞게 변환
         // 방 리스트 정보를 얻기 위한 네트워킹 시작
         service.resultRoomListRepos(map)
             .subscribeOn(Schedulers.io())   // 데이터를 보내는 쓰레드.
@@ -136,7 +136,6 @@ class RoomListFragment() : Fragment() {
             -> showNextPage(roomDataList, true)
             else -> {
                 getCurrenPageList(roomDataList, tabIndexNum)
-                //setSearchListView(arrayList as ArrayList<SearchResultData>, tabIndexNum)
             }
         }
     }

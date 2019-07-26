@@ -1,10 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".AddRoomActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="@dimen/AddRoomLayoutMargin"
+              android:layout_marginRight="@dimen/AddRoomLayoutMargin"
+              android:orientation="vertical"
+              android:background="#FFFFFF"
+              tools:context=".AddRoomActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/AddRoomTitleMarginTop"
+            android:layout_gravity="center"
+            android:gravity="center"
+    >
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/AddRoomTitleHeight"
+                android:text="목표이름 : "
+                android:textSize="20dp"
+                android:gravity="left|center"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+        />
+
+        <EditText
+                android:id="@+id/editTextGoalName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/AddRoomTitleHeight"
+                android:imeOptions="actionNext"
+                android:inputType="textNoSuggestions"
+                android:paddingLeft="10dp"
+                android:layout_gravity="bottom"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosansbold"
+        />
+    </LinearLayout>
+
+    <EditText
+            android:id="@+id/editTextGoalDescription"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/AddRoomContextHeight"
+            android:imeOptions="actionNext"
+            android:inputType="textMultiLine|textLongMessage"
+            android:padding="10dp"
+            android:layout_marginTop="@dimen/AddRoomContextTitleMarginTop"
+            android:scrollHorizontally="false"
+            android:textSize="18dp"
+            android:background="@drawable/addroom_background"
+            android:hint="@string/addRoomContextHint"
+            android:fontFamily="@font/notosansregular"
+            android:gravity="top"
+    />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="기간"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/AddRoomContextTitleMarginTop"
+            android:layout_marginBottom="@dimen/AddRoomContextTitleMarginBottom"
+    />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:id="@+id/sevenDayBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/addroom_sevendaybtn"
+                app:layout_constraintDimensionRatio="1:1" />
+
+        <View android:layout_width="0dp" android:layout_height="match_parent"
+        android:layout_weight="0.05"></View>
+
+        <ImageView
+                android:id="@+id/oneMonthBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/addroom_onemonthbtn"
+                app:layout_constraintDimensionRatio="1:1" />
+
+        <View android:layout_width="0dp" android:layout_height="match_parent"
+              android:layout_weight="0.05"></View>
+
+        <ImageView
+                android:id="@+id/threeMonthBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/addroom_threemonthbtn"
+                app:layout_constraintDimensionRatio="1:1"
+        />
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="금액"
+            android:layout_marginTop="@dimen/AddRoomContextTitleMarginTop"
+            android:layout_marginBottom="@dimen/AddRoomContextTitleMarginBottom"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:layout_gravity="left"
+    />
+
+    <SeekBar
+            android:id="@+id/moneySeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="50"
+            android:progress="0"
+            android:progressDrawable="@drawable/addroom_seekbar_style"
+            android:splitTrack="false"
+            android:thumb="@drawable/addroom_thumb" />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+        <TextView
+                android:id="@+id/textViewMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/notosansbold"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="free"
+                android:textSize="12dp" />
+
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/AddRoomContextTitleMarginTop"
+            android:layout_marginBottom="@dimen/AddRoomContextTitleMarginBottom"
+            android:gravity="left"
+            android:text="인원"
+            android:textSize="17dp" />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:id="@+id/threePeopleBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.225"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:srcCompat="@drawable/addroom_threebtn"
+        />
+
+        <View android:layout_width="0dp" android:layout_height="match_parent"
+              android:layout_weight="0.033"></View>
+
+        <ImageView
+                android:id="@+id/fourPeopleBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.225"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:srcCompat="@drawable/addroom_fourbtn"
+        />
+
+        <View android:layout_width="0dp" android:layout_height="match_parent"
+              android:layout_weight="0.033"></View>
+
+        <ImageView
+                android:id="@+id/fivePeopleBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.225"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:srcCompat="@drawable/addroom_fivebtn"
+        />
+
+        <View android:layout_width="0dp" android:layout_height="match_parent"
+              android:layout_weight="0.033"></View>
+
+        <ImageView
+                android:id="@+id/sixPeopleBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.225"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:srcCompat="@drawable/addroom_sixbtn"
+        />
+    </LinearLayout>
+
+    <ImageView
+            android:id="@+id/addRoomBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/AddRoomAddBtnMarginTop"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/addroom_addroombtn"
+    />
+</LinearLayout>

@@ -20,12 +20,8 @@ class DurationTabAdapter(fm: FragmentManager, private var tabCount: Int) :  Frag
     // 0 : 7일,  1 : 1달,  2 : 3달
     override fun getItem(position: Int): Fragment? {
         Log.d("LogGoGo", "position is $position")
-        var bundle: Bundle = Bundle()
-        bundle.putInt("index", position)
-        var roomListFragment = RoomListFragment()
-        roomListFragment.arguments = bundle
         return when(position) {
-            0, 1, 2 -> roomListFragment
+            0, 1, 2 -> RoomListFragment(position)
             else -> null
         }
     }

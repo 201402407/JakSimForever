@@ -3,7 +3,9 @@ package apps.user.jaksimforever.utils
 import android.telecom.Call
 import apps.user.jaksimforever.data.JoinData
 import apps.user.jaksimforever.data.LoginData
+import apps.user.jaksimforever.data.RoomData
 import apps.user.jaksimforever.data.RoomListData
+import com.google.gson.annotations.SerializedName
 import io.reactivex.Observable
 import io.reactivex.Single
 import org.json.JSONArray
@@ -27,14 +29,19 @@ data class LoginResultData(val result : Int, var nickname : String?, var reason 
 
 interface JoinService {
     @POST("/members/join")
-    fun resultJoinRepos(@Body joinData: JoinData) : Single<JoinResultData>
+    fun resultJoinRepos(@Body joinData: JoinData) : Single<ResultData>
 
     @POST("/members/{check}")
-    fun resultCheckRepos(@Path("check") member : String, @Body params: HashMap<String, String>) : Single<JoinResultData>
+    fun resultCheckRepos(@Path("check") member : String, @Body params: HashMap<String, String>) : Single<ResultData>
 }
-data class JoinResultData(val result : Int)
+data class ResultData(val result : Int)
 
 interface RoomListService {
     @POST("/rooms/getRoomList")
     fun resultRoomListRepos(@Body params: HashMap<String, Int>) : Single<ArrayList<RoomListData>>
+}
+
+interface AddRoomService {
+    @POST("/rooms/addRoom")
+    fun resultAddRoomRepos(@Body roomData: RoomData) : Single<ResultData>
 }

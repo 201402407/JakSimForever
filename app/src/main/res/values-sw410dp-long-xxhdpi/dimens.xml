@@ -31,7 +31,13 @@
     <dimen name="JoinMarginTop">10dp</dimen>
 
     <!-- AddRoomActivity -->
-    <dimen name="addRoomLayoutMargin">17dp</dimen>
+    <dimen name="AddRoomLayoutMargin">17dp</dimen>
+    <dimen name="AddRoomTitleMarginTop">100dp</dimen>
+    <dimen name="AddRoomTitleHeight">40dp</dimen>
+    <dimen name="AddRoomContextHeight">150dp</dimen>
+    <dimen name="AddRoomContextTitleMarginTop">20dp</dimen>
+    <dimen name="AddRoomContextTitleMarginBottom">10dp</dimen>
+    <dimen name="AddRoomAddBtnMarginTop">35dp</dimen>
 
     <!-- MainActivity -->
     <dimen name="MainLayoutMargin">10dp</dimen>
