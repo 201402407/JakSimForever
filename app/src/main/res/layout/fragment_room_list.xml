@@ -10,10 +10,46 @@
                   android:layout_marginLeft="@dimen/RoomListLayoutMargin"
                   android:layout_marginRight="@dimen/RoomListLayoutMargin"
     >
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/RoomListLayoutMargin"
+                android:layout_marginRight="@dimen/RoomListLayoutMargin"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+            <EditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/searchBarHeight"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/border_radius"
+                    android:fontFamily="@font/notosansbold"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textNoSuggestions"
+                    android:paddingLeft="10dp"
+                    android:textColor="#000000"
+                    android:textSize="16dp" />
+
+            <ImageView
+                    android:id="@+id/searchBtn"
+                    android:layout_width="@dimen/searchBtnWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/searchEditText"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/searchBtnMarginLeft"
+                    android:layout_marginRight="@dimen/searchBtnMarginRight"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/list_searchbtn" />
+        </RelativeLayout>
+
         <android.support.v7.widget.RecyclerView
                 android:id="@+id/roomListRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/searchRecycleViewHeight"
+                android:layout_marginTop="30dp"
                 android:visibility="visible"
                 tools:listItem="@layout/room_list_item"
         >

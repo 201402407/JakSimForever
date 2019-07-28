@@ -15,15 +15,15 @@ import android.support.v4.view.PagerAdapter
 
 
 class DurationTabAdapter(fm: FragmentManager, private var tabCount: Int) :  FragmentPagerAdapter(fm) {
+    private val mFragmentList: ArrayList<Fragment> = ArrayList()
+    private val mFragmentTitleList: ArrayList<String> = ArrayList()
+
     // 누른 탭의 인덱스 값을 받아 Fragment에 전달.
     // 받은 Fragment에서 인덱스 값에 따른 경우 처리 하면 됨.
     // 0 : 7일,  1 : 1달,  2 : 3달
-    override fun getItem(position: Int): Fragment? {
-        Log.d("LogGoGo", "position is $position")
-        return when(position) {
-            0, 1, 2 -> RoomListFragment(position)
-            else -> null
-        }
+    override fun getItem(position: Int): Fragment {
+        Log.d("LogGoGo", "$position is this getItem.")
+        return mFragmentList[position]
     }
 
     override fun getItemPosition(`object`: Any): Int {
@@ -38,7 +38,17 @@ class DurationTabAdapter(fm: FragmentManager, private var tabCount: Int) :  Frag
         //Log.e("FragmentPagerAdapter", "destroyItem position : $position")
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return null
+    fun addFragment(fragment: Fragment, title: String) {
+        mFragmentList.add(fragment)
+        mFragmentTitleList.add(title)
     }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return mFragmentTitleList[position]
+    }
+
+//    fun getFragment(position: Int): Fragment? {
+//        Log.d("LogGoGo", "$position is this getFragment.")
+//        return RoomListFragment.newInstance(position.toString())
+//    }
 }

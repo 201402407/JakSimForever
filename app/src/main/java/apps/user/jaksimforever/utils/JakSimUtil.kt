@@ -11,7 +11,7 @@ class JakSimUtil {
     companion object {
         const val SERVER_URL: String = "http://192.168.1.6:8080"
         const val TAG: String = "LogGoGo"
-
+        var NICKNAME: String? = null
         /*
         EditText의 값 중 공백 확인
         @return : boolean(true : 앞 뒤 공백 또는 전체 공백이 아님. false : 둘 중 하나라도 해당하는 경우)

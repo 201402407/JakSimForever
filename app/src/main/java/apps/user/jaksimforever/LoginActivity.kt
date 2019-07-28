@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.MotionEvent.ACTION_DOWN
 import android.view.View
 import android.widget.Toast
+import apps.user.jaksimforever.JakSimUtil.Companion.NICKNAME
 import apps.user.jaksimforever.JakSimUtil.Companion.SERVER_URL
 import apps.user.jaksimforever.JakSimUtil.Companion.TAG
 import apps.user.jaksimforever.data.LoginData
@@ -57,9 +58,9 @@ class LoginActivity : FontActivity() {
                             if (it.result == 1) {   // 로그인 성공
                                 Log.d(TAG, "nickname : ${it.nickname}")
                                 Toast.makeText(context, "Success! your nickname : ${it.nickname}", Toast.LENGTH_LONG).show()
-
-                                intent = Intent(context, RoomListActivity::class.java)
-                                intent.putExtra("nickname", it.nickname)
+                                NICKNAME = it.nickname
+//                                intent = Intent(context, RoomListActivity::class.java)
+//                                intent.putExtra("nickname", it.nickname)
                                 startActivity(intent)
                                 finish()
                             }

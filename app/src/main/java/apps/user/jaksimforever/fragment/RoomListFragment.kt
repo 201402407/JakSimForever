@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -23,6 +25,7 @@ import apps.user.jaksimforever.databinding.FragmentRoomListBinding
 import apps.user.jaksimforever.utils.RoomListService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_room_list.*
 import kotlinx.android.synthetic.main.fragment_room_list.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -31,24 +34,48 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.ArrayList
 
 @SuppressLint("ValidFragment")
-class RoomListFragment(var durationIndex: Int) : Fragment() {
+class RoomListFragment() : Fragment() {
     var roomListAdapter: RoomListAdapter? = null
     var roomDataList = arrayListOf<RoomListData>()
+    var roomFilterDataList = arrayListOf<RoomListData>()
     var indexStartNum: Int = 1
     private var isPageRefresh: Boolean = false
+    private var isSearch: Boolean = false
+    private var searchWord: String? = null
     private var searchResultCount: Int = 0
     lateinit var binding: FragmentRoomListBinding
+    private var durationIndex: String = "default"
+
+    companion object {
+        fun newInstance(s: String): RoomListFragment {
+//            val f = RoomListFragment()
+//            val bdl = Bundle(1)
+//            bdl.putString("index", s)
+//            f.arguments = bdl
+//            return f
+            return RoomListFragment().apply {
+                arguments = Bundle().apply { putString("index", s) }
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        durationIndex = arguments?.getString("index", "default")!!
+        Log.d(TAG, "durationIndex is $durationIndex")
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Data Binding을 위한 ContentView 설정.
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_room_list, container, false)
+//        durationIndex = arguments!!.getString("index", "default")
+//        Log.d(TAG, "durationIndex is $durationIndex")
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         searchResultCount = resources.getInteger(R.integer.searchResultCount)
-        durationIndex = arguments!!.getInt("index")
         Log.d(TAG, "onActivityCreated, type is $durationIndex")
 
         // 방 리스트 서비스 Create
@@ -60,14 +87,16 @@ class RoomListFragment(var durationIndex: Int) : Fragment() {
             .build()
             .create(RoomListService::class.java)
 
-        val map = hashMapOf("room_duration" to durationIndex)   // 전송 타입에 맞게 변환
+        val map = hashMapOf("room_duration" to Integer.parseInt(durationIndex))   // 전송 타입에 맞게 변환
         // 방 리스트 정보를 얻기 위한 네트워킹 시작
         service.resultRoomListRepos(map)
             .subscribeOn(Schedulers.io())   // 데이터를 보내는 쓰레드.
             .observeOn(AndroidSchedulers.mainThread())  // 데이터를 받아서 사용하는 쓰레드.
             .subscribe({    // 받은 데이터를 사용하는 함수. 받은 데이터 : it
                 // 서버 통신 성공
+                // TODO : 클릭 시 _id값과 닉네임 보내는 방법
                 it.let {
+                    isSearch = false
                     roomDataList.clear()
                     roomDataList.addAll(it.filterNotNull())
                     setTabIndex(roomDataList)
@@ -76,17 +105,10 @@ class RoomListFragment(var durationIndex: Int) : Fragment() {
                 // 서버 통신 실패
                 Log.d(TAG, "Error : ${it.message}")
             })
-//        when(durationIndex) {
-//            0 -> sevenDaysFilter()
-//            1 -> oneMonthFilter()
-//            2 -> threeMonthFilter()
-//            else -> null
-//        }
 
-        // 중간 결과 리스트 레이아웃 설정
         // 현재 목표를 담은 RecyclerView 설정
         // 초기 생성 함수 안에 있기 때문에, when을 지나오면 우선 roomDataList에 값을 저장하기 때문.
-        setRecyclerView(roomDataList)
+        setRecyclerView(roomDataList, indexStartNum)
 
         // 탭 레이아웃 클릭 리스너
         listTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -104,6 +126,22 @@ class RoomListFragment(var durationIndex: Int) : Fragment() {
             }
 
         })
+
+        // 검색 이미지 버튼 클릭 리스너
+        searchBtn.setOnTouchListener(View.OnTouchListener { _, event ->
+            if(event?.action == MotionEvent.ACTION_DOWN) {
+                searchEditText.text.let {
+                    searchWord = searchEditText.text.toString()
+                    isSearch = true
+                    if (setSearchList()) {
+                        setTabIndex(getArrayListFromFilter())
+                        setRecyclerView(getArrayListFromFilter(), indexStartNum)
+                    }
+                }
+                return@OnTouchListener true
+            }
+            false
+        })
     }
 //
 //    fun sevenDaysFilter() {
@@ -114,6 +152,34 @@ class RoomListFragment(var durationIndex: Int) : Fragment() {
 //
 //    fun threeMonthFilter() {
 //    }
+
+    /*
+    검색 필터 사용 시 검색어에 맞는 방 이름 또는 방장 이름만 가져다 저장하기
+     */
+    private fun setSearchList(): Boolean {
+        if (isSearch) {
+            searchWord.let { roomDataList.let {
+                roomFilterDataList.clear()
+                roomFilterDataList = roomDataList.filter {
+                        s -> s.room_name.contains(searchWord!!) ||  s.room_manager_name.contains(searchWord!!)
+                } as ArrayList<RoomListData>
+                return true
+//                val itemDataIterator = roomDataList.iterator()
+//                while(itemDataIterator.hasNext()) {
+//                    var roomListData: RoomListData = itemDataIterator.next()
+//                    if ()
+//                }
+            }}
+        }
+        return false
+    }
+
+    /*
+    현재 필터와 조건에 맞는 arraylist 반환
+     */
+    private fun getArrayListFromFilter(): ArrayList<RoomListData> {
+        return if (isSearch) roomFilterDataList else roomDataList
+    }
 
     /*
     사용자가 탭을 눌렀을 때 호출
@@ -129,13 +195,14 @@ class RoomListFragment(var durationIndex: Int) : Fragment() {
                 tabIndexNum = Integer.parseInt(page!!) // 해당 페이지 번호 가져오기
             }
         }
+        val arrayList = getArrayListFromFilter()
         when (tabIndexNum) {
             -2 // ◀ 버튼 클릭 시
-            -> showNextPage(roomDataList, false)
+            -> showNextPage(arrayList, false)
             -1 // ▶ 버튼 클릭 시
-            -> showNextPage(roomDataList, true)
+            -> showNextPage(arrayList, true)
             else -> {
-                getCurrenPageList(roomDataList, tabIndexNum)
+                setRecyclerView(arrayList, tabIndexNum)
             }
         }
     }
@@ -156,13 +223,14 @@ class RoomListFragment(var durationIndex: Int) : Fragment() {
         return result
     }
 
-    private fun setRecyclerView(arrayList: ArrayList<RoomListData>) {
+    private fun setRecyclerView(arrayList: ArrayList<RoomListData>, index: Int) {
         // 중간 결과 리스트 레이아웃 설정
         // 현재 목표를 담은 RecyclerView 설정
         if (arrayList.isEmpty())
             Toast.makeText(context, "리스트가 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
 
-        roomListAdapter = RoomListAdapter(context!!, arrayList)
+        var result: ArrayList<RoomListData> = getCurrenPageList(arrayList, index)
+        roomListAdapter = RoomListAdapter(context!!, result)
         binding.roomListRecyclerView.adapter = roomListAdapter
         binding.roomListRecyclerView.adapter!!.notifyDataSetChanged()
         binding.roomListRecyclerView.layoutManager = LinearLayoutManager(context)

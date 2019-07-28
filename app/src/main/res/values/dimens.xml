@@ -54,6 +54,6 @@
     <dimen name="searchBtnWidth">20dp</dimen>
     <dimen name="searchBtnMarginLeft">10dp</dimen>
     <dimen name="searchBtnMarginRight">15dp</dimen>
-    <dimen name="searchRecycleViewHeight">350dp</dimen>
+    <dimen name="searchRecycleViewHeight">450dp</dimen>
     <dimen name="RoomListDurationImageWidth">100dp</dimen>
 </resources>
